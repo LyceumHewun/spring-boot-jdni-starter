@@ -39,5 +39,10 @@ public class JdniRegistrar implements ImportBeanDefinitionRegistrar {
         // JdniDriver
         BeanDefinitionBuilder builder1 = BeanDefinitionBuilder.rootBeanDefinition(driverType.getClazz().getName());
         registry.registerBeanDefinition(driverType.getClazz().getName(), builder1.getBeanDefinition());
+
+        // JdniConfigProcessor
+        BeanDefinitionBuilder builder2 = BeanDefinitionBuilder.rootBeanDefinition(JdniConfigProcessor.class.getName());
+        builder2.addPropertyValue("driverType", driverType);
+        registry.registerBeanDefinition(JdniConfigProcessor.class.getName(), builder2.getBeanDefinition());
     }
 }

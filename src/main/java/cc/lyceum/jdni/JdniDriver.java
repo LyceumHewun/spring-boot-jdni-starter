@@ -5,6 +5,8 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.stereotype.Component;
 
+import java.util.Properties;
+
 /**
  * {@link Component} 这个注解没用的, Spring注入默认过滤底层类, 只是让IDE有提示作用,
  * 实际注入是在{@link JdniRegistrar#registerBeanDefinitions(AnnotationMetadata, BeanDefinitionRegistry)}上实现的
@@ -16,9 +18,18 @@ import org.springframework.stereotype.Component;
 public interface JdniDriver {
 
     /**
+     * 根据配置初始化驱动
+     *
+     * @param properties 配置
+     * @throws JdniDriverException 驱动运行错误时抛出该异常
+     */
+    void init(Properties properties) throws JdniDriverException;
+
+    /**
      * 加载DLL
      *
-     * @param path DLL路径
+     * @param path DLL完整路径
+     * @throws JdniDriverException 驱动运行错误时抛出该异常
      */
     void loadLibrary(String... path) throws JdniDriverException;
 

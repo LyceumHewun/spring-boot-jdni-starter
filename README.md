@@ -1,12 +1,18 @@
 # spring-boot-jdni-starter
 
+## What is JDNI
+
+JNDI here refers to Java to .Net Interface, not Java Naming and Directory Interface.
+
+## Overview
+
 Java to .Net Interface based on Spring Boot. Call managed DLLs using JNI, Javonet or Jacob as the driver. Native DLLs (Unmanaged DLLs) are not supported.
 
 ## TODO
 
 - [x] support DLL lib
 - [ ] support SO lib
-- [x] support Javonet Driver
+- [x] support [Javonet](https://www.javonet.com/) Driver
 - [ ] support Jacob Driver
 - [ ] support JNA Driver
 - [ ] custom selection .Net framework (currently only 4.0 is supported)
