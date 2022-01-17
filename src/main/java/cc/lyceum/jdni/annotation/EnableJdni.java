@@ -1,6 +1,7 @@
 package cc.lyceum.jdni.annotation;
 
 import cc.lyceum.jdni.DriverType;
+import cc.lyceum.jdni.config.BeansRegisterConfig;
 import cc.lyceum.jdni.proxy.JdniRegistrar;
 import org.springframework.context.annotation.Import;
 
@@ -13,7 +14,10 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({JdniRegistrar.class})
+@Import({
+        JdniRegistrar.class,
+        BeansRegisterConfig.class
+})
 public @interface EnableJdni {
 
     /**
