@@ -36,10 +36,16 @@ public class JavonetDriver implements JdniDriver {
     public void init(Properties properties) throws JdniDriverException {
         if (!Javonet.isActivated()) {
             try {
-                boolean activate = Javonet.activate(properties.getProperty(JdniConfig.JAVONET_EMAIL),
-                        properties.getProperty(JdniConfig.JAVONET_LICENSE),
-                        JavonetFramework.v40);
-                LOG.info("Javonet driver init result: {}", activate);
+                if (properties.containsKey(JdniConfig.JAVONET_EMAIL)
+                        && properties.containsKey(JdniConfig.JAVONET_LICENSE)) {
+                    boolean activate = Javonet.activate(
+                            properties.getProperty(JdniConfig.JAVONET_EMAIL),
+                            properties.getProperty(JdniConfig.JAVONET_LICENSE),
+                            JavonetFramework.v40);
+                    LOG.info("Javonet driver init result: {}", activate);
+                } else {
+                    LOG.error("Javonet driver init fail, not found config properties.");
+                }
             } catch (JavonetException e) {
                 throw new JdniDriverException("Javonet驱动启动失败", e);
             }

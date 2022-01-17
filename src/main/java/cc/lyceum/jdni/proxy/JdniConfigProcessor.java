@@ -5,6 +5,7 @@ import cc.lyceum.jdni.JdniDriver;
 import cc.lyceum.jdni.config.JdniConfig;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.lang.Nullable;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Properties;
 
@@ -28,7 +29,12 @@ public class JdniConfigProcessor implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         if (null != config) {
             Properties properties = config.initProperties(driverType);
-            driver.init(properties);
+            if (null != properties)
+                driver.init(properties);
+
+            String[] libraryPaths = config.loadLibrary();
+            if (!ObjectUtils.isEmpty(libraryPaths))
+                driver.loadLibrary(libraryPaths);
         }
     }
 }
