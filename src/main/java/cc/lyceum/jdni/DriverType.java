@@ -7,12 +7,6 @@ package cc.lyceum.jdni;
 public enum DriverType {
 
     /**
-     * 不建议使用, 而且也不打算适配✌
-     */
-    @Deprecated
-    JNI("jni", null),
-
-    /**
      * https://www.javonet.com/
      */
     JAVONET("javonet", JavonetDriver.class) {
@@ -25,7 +19,17 @@ public enum DriverType {
     /**
      * https://github.com/freemansoft/jacob-project
      */
-    JACOD("jacob", null);
+    JACOB("jacob", null),
+
+    /**
+     * https://www.jcobridge.com/
+     */
+    JCOB("JCOBridge", null),
+
+    /**
+     * https://github.com/java-native-access/jna
+     */
+    JNA("Java-Native-Access", null);
 
     private final String name;
     private final Class<? extends JdniDriver> clazz;

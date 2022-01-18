@@ -6,7 +6,7 @@ JNDI here refers to Java to .Net Interface, not Java Naming and Directory Interf
 
 ## Overview
 
-Java to .Net Interface based on Spring Boot. Call managed DLLs using JNI, Javonet or Jacob as the driver. Native DLLs (Unmanaged DLLs) are not supported.
+Java to .Net Interface based on Spring Boot. Call managed DLL using Javonet or Jacob as the driver. Native DLL (Unmanaged DLL) are not supported.
 
 ## TODO
 
@@ -14,7 +14,8 @@ Java to .Net Interface based on Spring Boot. Call managed DLLs using JNI, Javone
 - [ ] support SO lib
 - [x] support [Javonet](https://www.javonet.com/) Driver
 - [ ] support [Jacob](https://github.com/freemansoft/jacob-project) Driver
-- [ ] support JNA Driver
+- [ ] suppor [JCOBridge](https://www.jcobridge.com/) Driver
+- [ ] support [JNA](https://github.com/java-native-access/jna) Driver
 - [ ] custom selection .Net framework (currently only 4.0 is supported)
 - [ ] support more javanet authentication methods
 
@@ -69,7 +70,7 @@ The [default config class](https://github.com/LyceumHewun/spring-boot-jdni-start
 jdni:
   lib:
     - "System.IO"
-    - "D:\MyLib.dll"
+    - "D:\\MyLib.dll"
   javonet-email: ${javonet.email}
   javonet-license: ${javonet.license}
 ```
@@ -128,3 +129,4 @@ public class MyTypeHandler implements JdniTypeHandler {
 
 - ***@DotNetParam***
   - `typeHandler` is different from `@DotNetMethod`, this handles input parameters.
+
